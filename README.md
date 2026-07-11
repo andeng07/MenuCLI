@@ -1,23 +1,49 @@
-
 # MenuCLI
 
-A lightweight terminal menu framework for Java
+A lightweight terminal menu framework for Java and Kotlin.
 
 MenuCLI handles menu navigation and action execution so you can focus on implementing your application's functionality.
 
 ## Features
 
 - Hierarchical menus
-- Menu builder
+- Java builder API
+- Kotlin DSL
 - Executable menu actions
-- Automatic navigation
+- Automatic menu navigation
 - Lightweight and dependency-free
 
 ## Installation
 
 Clone the repository and include it in your project.
 
-## Quick Start
+## Kotlin DSL
+
+Build hierarchical menus declaratively using the Kotlin DSL.
+
+```kotlin
+val mainMenu = menu("Main Menu", "Demo application") {
+    submenu("Calculator", "Choose an operation") {
+        action("Addition", "Adds two numbers") {
+            println("Adding...")
+        }
+
+        action("Subtraction", "Subtracts two numbers") {
+            println("Subtracting...")
+        }
+    }
+
+    action("Exit", "Terminates the application") {
+        exitProcess(0)
+    }
+}
+
+MenuRunner(mainMenu, Scanner(System.`in`)).start()
+```
+
+The DSL automatically constructs the menu hierarchy, making complex menus concise and easy to read.
+
+## Java Builder API
 
 ### 1. Create your actions
 
@@ -54,7 +80,7 @@ Scanner scanner = new Scanner(System.in);
 new MenuRunner(mainMenu, scanner).start();
 ```
 
-MenuCLI will render the menu, handle navigation, and execute the selected actions.
+MenuCLI automatically renders menus, handles navigation, and executes the selected actions.
 
 ## Nested Menus
 
