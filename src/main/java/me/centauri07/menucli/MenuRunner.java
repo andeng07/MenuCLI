@@ -3,26 +3,25 @@ package me.centauri07.menucli;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.NoSuchElementException;
-import java.util.Scanner;
 
 public class MenuRunner {
-    private final Scanner scanner;
+    private final MenuView menuView;
     private final Deque<Menu> history = new ArrayDeque<>();
 
     private Menu current;
 
-    public MenuRunner(Menu root, Scanner scanner) {
+    public MenuRunner(Menu root, MenuView menuView) {
         this.current = root;
-        this.scanner = scanner;
+        this.menuView = menuView;
     }
 
     public void start() {
         while (true) {
-            current.run();
+            menuView.renderMenu(current);
 
-            int choice = scanner.nextInt();
+            MenuOption selected = menuView.selectOption(current);
 
-            if (choice == 0) {
+            if (selected == null) {
                 try {
                     current = history.pop();
                 } catch (NoSuchElementException e) {
@@ -31,10 +30,8 @@ public class MenuRunner {
                 continue;
             }
 
-            MenuOption selected = current.getOptions()[choice - 1];
-
             if (selected instanceof MenuAction) {
-                selected.run();
+                ((MenuAction) selected).run();
             } else {
                 history.push(current);
                 current = (Menu) selected;
