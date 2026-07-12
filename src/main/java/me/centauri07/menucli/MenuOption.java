@@ -9,8 +9,6 @@ public abstract class MenuOption {
         this.description = description;
     }
 
-    abstract void run();
-
     public String getName() {
         return name;
     }

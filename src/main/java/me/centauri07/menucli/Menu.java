@@ -8,16 +8,6 @@ public class Menu extends MenuOption {
         this.options = options;
     }
 
-    @Override
-    public void run() {
-        System.out.println("[Menu] " + name + ": " + description);
-
-        System.out.println("[0] Back");
-        for (int i = 0; i < options.length; i++) {
-            System.out.println("[" + (i + 1) + "] " + options[i].name + " - " + options[i].description);
-        }
-    }
-
     public MenuOption[] getOptions() {
         return options;
     }

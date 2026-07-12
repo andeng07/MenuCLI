@@ -9,7 +9,6 @@ public class MenuAction extends MenuOption {
         this.action = action;
     }
 
-    @Override
     void run() {
         action.run();
     }
