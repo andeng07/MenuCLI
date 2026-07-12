@@ -1,4 +1,4 @@
-package me.centauri07.menucli;
+package me.centauri07.menucli.core;
 
 public class MenuAction extends MenuOption {
 
@@ -9,7 +9,7 @@ public class MenuAction extends MenuOption {
         this.action = action;
     }
 
-    void run() {
+    public void run() {
         action.run();
     }
 

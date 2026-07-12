@@ -1,4 +1,9 @@
-package me.centauri07.menucli;
+package me.centauri07.menucli.runner;
+
+import me.centauri07.menucli.view.MenuView;
+import me.centauri07.menucli.core.Menu;
+import me.centauri07.menucli.core.MenuAction;
+import me.centauri07.menucli.core.MenuOption;
 
 import java.util.ArrayDeque;
 import java.util.Deque;

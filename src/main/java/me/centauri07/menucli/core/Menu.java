@@ -1,4 +1,4 @@
-package me.centauri07.menucli;
+package me.centauri07.menucli.core;
 
 public class Menu extends MenuOption {
     private final MenuOption[] options;

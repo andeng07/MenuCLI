@@ -1,4 +1,4 @@
-package me.centauri07.menucli;
+package me.centauri07.menucli.core;
 
 public abstract class MenuOption {
     protected final String name;

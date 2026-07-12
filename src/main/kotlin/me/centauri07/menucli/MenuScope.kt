@@ -1,5 +1,9 @@
 package me.centauri07.menucli
 
+import me.centauri07.menucli.core.Menu
+import me.centauri07.menucli.core.MenuAction
+import me.centauri07.menucli.core.MenuOption
+
 @DslMarker
 internal annotation class MenuScopeMarker
 

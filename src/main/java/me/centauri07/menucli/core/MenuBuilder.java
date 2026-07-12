@@ -1,4 +1,4 @@
-package me.centauri07.menucli;
+package me.centauri07.menucli.core;
 
 import java.util.ArrayList;
 import java.util.List;
