@@ -9,3 +9,4 @@ plugins {
 rootProject.name = "MenuCLI"
 include("console")
 include("engine")
+include("swing")
