@@ -1,25 +1,23 @@
 plugins {
-    id("java")
-    kotlin("jvm")
+    kotlin("jvm") version "2.4.0" apply false
 }
 
-group = "me.centauri07.menucli"
+group = "me.centauri.menu"
 version = "1.0-SNAPSHOT"
 
-repositories {
-    mavenCentral()
+allprojects {
+    repositories {
+        mavenCentral()
+    }
 }
 
-dependencies {
-    testImplementation(platform("org.junit:junit-bom:6.0.0"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-    implementation(kotlin("stdlib-jdk8"))
-}
+subprojects {
+    apply(plugin = "java")
+    apply(plugin = "org.jetbrains.kotlin.jvm")
 
-tasks.test {
-    useJUnitPlatform()
-}
-kotlin {
-    jvmToolchain(24)
+    plugins.withId("org.jetbrains.kotlin.jvm") {
+        extensions.configure<org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension> {
+            jvmToolchain(24)
+        }
+    }
 }

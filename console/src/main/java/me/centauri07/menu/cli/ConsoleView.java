@@ -1,40 +1,34 @@
-package me.centauri07.menucli.view;
+package me.centauri07.menu.cli;
 
-import me.centauri07.menucli.core.Menu;
-import me.centauri07.menucli.core.MenuOption;
+import me.centauri07.menu.engine.core.Menu;
+import me.centauri07.menu.engine.core.Option;
+import me.centauri07.menu.engine.view.MenuView;
 
 import java.util.InputMismatchException;
-import java.util.Scanner;
 
-public class ConsoleMenuView implements MenuView {
-    private final Scanner scanner;
-
-    public ConsoleMenuView(Scanner scanner) {
-        this.scanner = scanner;
-    }
-
+public class ConsoleView implements MenuView<ConsoleContext> {
     @Override
-    public void renderMenu(Menu menu) {
+    public void renderMenu(ConsoleContext context, Menu menu) {
         System.out.println("[Menu] " + menu.getName() + ": " + menu.getDescription());
 
         System.out.println("[0] Back");
 
-        MenuOption[] options = menu.getOptions();
+        Option[] options = menu.getOptions();
         for (int i = 0; i < options.length; i++) {
             System.out.println("[" + (i + 1) + "] " + options[i].getName() + " - " + options[i].getDescription());
         }
     }
 
     @Override
-    public MenuOption selectOption(Menu menu) {
+    public Option selectOption(ConsoleContext context, Menu menu) {
         int systemInput;
 
         do {
             try {
-                systemInput = scanner.nextInt();
+                systemInput = context.getScanner().nextInt();
             } catch (InputMismatchException e) {
                 systemInput = -1;
-                scanner.nextLine();
+                context.getScanner().nextLine();
             }
         } while (systemInput < 0 || systemInput > menu.getOptions().length);
 

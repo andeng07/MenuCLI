@@ -1,30 +1,30 @@
-package me.centauri07.menucli.runner;
+package me.centauri07.menu.engine.runner;
 
-import me.centauri07.menucli.view.MenuView;
-import me.centauri07.menucli.core.Menu;
-import me.centauri07.menucli.core.MenuAction;
-import me.centauri07.menucli.core.MenuOption;
+import me.centauri07.menu.engine.core.*;
+import me.centauri07.menu.engine.view.MenuView;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.NoSuchElementException;
 
-public class MenuRunner {
-    private final MenuView menuView;
+public class MenuRunner<C extends Context> {
+    private final C context;
+    private final MenuView<C> menuView;
     private final Deque<Menu> history = new ArrayDeque<>();
 
     private Menu current;
 
-    public MenuRunner(Menu root, MenuView menuView) {
+    public MenuRunner(C context, Menu root, MenuView<C> menuView) {
+        this.context = context;
         this.current = root;
         this.menuView = menuView;
     }
 
     public void start() {
         while (true) {
-            menuView.renderMenu(current);
+            menuView.renderMenu(context, current);
 
-            MenuOption selected = menuView.selectOption(current);
+            Option selected = menuView.selectOption(context, current);
 
             if (selected == null) {
                 try {
@@ -35,8 +35,8 @@ public class MenuRunner {
                 continue;
             }
 
-            if (selected instanceof MenuAction) {
-                ((MenuAction) selected).run();
+            if (selected instanceof Action) {
+                ((Action) selected).run(context);
             } else {
                 history.push(current);
                 current = (Menu) selected;

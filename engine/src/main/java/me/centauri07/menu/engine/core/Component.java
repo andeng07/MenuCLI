@@ -1,10 +1,10 @@
-package me.centauri07.menucli.core;
+package me.centauri07.menu.engine.core;
 
-public abstract class MenuOption {
-    protected final String name;
-    protected final String description;
+public class Component {
+    private final String name;
+    private final String description;
 
-    public MenuOption(String name, String description) {
+    public Component(String name, String description) {
         this.name = name;
         this.description = description;
     }
