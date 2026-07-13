@@ -34,6 +34,7 @@ public class ConsoleMenuView implements MenuView {
                 systemInput = scanner.nextInt();
             } catch (InputMismatchException e) {
                 systemInput = -1;
+                scanner.nextLine();
             }
         } while (systemInput < 0 || systemInput > menu.getOptions().length);
 
