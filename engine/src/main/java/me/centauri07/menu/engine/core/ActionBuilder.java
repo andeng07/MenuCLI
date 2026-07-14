@@ -7,7 +7,7 @@ public class ActionBuilder {
     private Component component;
     private Consumer<Context> action;
 
-    private ActionBuilder setComponent(Component component) {
+    public ActionBuilder setComponent(Component component) {
         this.component = component;
 
         return this;
