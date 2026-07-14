@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class ConsoleContext implements Context {
-    private Scanner scanner;
+    private final Scanner scanner;
 
     public ConsoleContext(@NotNull Scanner scanner) {
         Objects.requireNonNull(scanner);
