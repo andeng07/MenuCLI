@@ -16,6 +16,6 @@ public class Menu extends Option {
     }
 
     public Option[] getOptions() {
-        return options;
+        return options.clone();
     }
 }
