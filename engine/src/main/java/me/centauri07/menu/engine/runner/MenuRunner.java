@@ -33,11 +33,9 @@ public class MenuRunner<C extends Context> {
             Option selected = menuView.selectOption(context, current);
 
             if (selected == null) {
-                try {
-                    current = history.pop();
-                } catch (NoSuchElementException e) {
-                    break;
-                }
+                if (history.isEmpty()) break;
+
+                current = history.pop();
                 continue;
             }
 
