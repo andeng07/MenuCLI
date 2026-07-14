@@ -10,3 +10,4 @@ rootProject.name = "MenuCLI"
 include("console")
 include("engine")
 include("swing")
+include("discord-jda")
