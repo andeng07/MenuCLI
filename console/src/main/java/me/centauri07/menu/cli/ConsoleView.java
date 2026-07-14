@@ -3,12 +3,13 @@ package me.centauri07.menu.cli;
 import me.centauri07.menu.engine.core.Menu;
 import me.centauri07.menu.engine.core.Option;
 import me.centauri07.menu.engine.view.MenuView;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.InputMismatchException;
 
 public class ConsoleView implements MenuView<ConsoleContext> {
     @Override
-    public void renderMenu(ConsoleContext context, Menu menu) {
+    public void renderMenu(@NotNull ConsoleContext context, @NotNull Menu menu) {
         System.out.println("[Menu] " + menu.getName() + ": " + menu.getDescription());
 
         System.out.println("[0] Back");
@@ -20,7 +21,7 @@ public class ConsoleView implements MenuView<ConsoleContext> {
     }
 
     @Override
-    public Option selectOption(ConsoleContext context, Menu menu) {
+    public Option selectOption(@NotNull ConsoleContext context, @NotNull Menu menu) {
         int systemInput;
 
         do {

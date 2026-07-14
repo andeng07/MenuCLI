@@ -3,6 +3,7 @@ package me.centauri07.menu.swing;
 import me.centauri07.menu.engine.core.Menu;
 import me.centauri07.menu.engine.core.Option;
 import me.centauri07.menu.engine.view.MenuView;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.util.concurrent.BlockingQueue;
@@ -12,7 +13,7 @@ public class SwingView implements MenuView<SwingContext> {
     private final BlockingQueue<Integer> triggers = new LinkedBlockingQueue<>();
 
     @Override
-    public void renderMenu(SwingContext context, Menu menu) {
+    public void renderMenu(@NotNull SwingContext context, @NotNull Menu menu) {
         context.getComponent().removeAll();
 
         JButton backButton = new JButton("Back");
@@ -37,7 +38,7 @@ public class SwingView implements MenuView<SwingContext> {
     }
 
     @Override
-    public Option selectOption(SwingContext context, Menu menu) {
+    public Option selectOption(@NotNull SwingContext context, @NotNull Menu menu) {
         int value;
 
         try {

@@ -1,12 +1,14 @@
 package me.centauri07.menu.jda.util;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class BlockingMap<K, V> {
     private final ConcurrentHashMap<K, CompletableFuture<V>> map = new ConcurrentHashMap<>();
 
-    public V take(K key) {
+    public V take(@NotNull K key) {
         CompletableFuture<V> future = new CompletableFuture<>();
         map.put(key, future);
 
@@ -17,7 +19,7 @@ public class BlockingMap<K, V> {
         }
     }
 
-    public void put(K key, V value) {
+    public void put(@NotNull K key, @NotNull V value) {
         CompletableFuture<V> future = map.remove(key);
 
         if (future != null) {

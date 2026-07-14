@@ -10,6 +10,7 @@ import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 
@@ -22,7 +23,7 @@ public class JDAMessageView extends ListenerAdapter implements MenuView<JDAConte
     }
 
     @Override
-    public void renderMenu(JDAContext context, Menu menu) {
+    public void renderMenu(@NotNull JDAContext context, @NotNull Menu menu) {
         EmbedBuilder builder = new EmbedBuilder()
                 .setColor(Color.GREEN)
                 .setTitle(menu.getName())
@@ -40,7 +41,7 @@ public class JDAMessageView extends ListenerAdapter implements MenuView<JDAConte
     }
 
     @Override
-    public Option selectOption(JDAContext context, Menu menu) {
+    public Option selectOption(@NotNull JDAContext context, @NotNull Menu menu) {
         int selection;
 
         do {

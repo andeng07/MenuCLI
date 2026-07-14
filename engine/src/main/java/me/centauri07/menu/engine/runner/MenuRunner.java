@@ -2,10 +2,12 @@ package me.centauri07.menu.engine.runner;
 
 import me.centauri07.menu.engine.core.*;
 import me.centauri07.menu.engine.view.MenuView;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 
 public class MenuRunner<C extends Context> {
     private final C context;
@@ -14,7 +16,11 @@ public class MenuRunner<C extends Context> {
 
     private Menu current;
 
-    public MenuRunner(C context, Menu root, MenuView<C> menuView) {
+    public MenuRunner(@NotNull C context, @NotNull Menu root, @NotNull MenuView<C> menuView) {
+        Objects.requireNonNull(context);
+        Objects.requireNonNull(root);
+        Objects.requireNonNull(menuView);
+
         this.context = context;
         this.current = root;
         this.menuView = menuView;
